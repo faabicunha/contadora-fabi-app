@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, User, Sparkles, Building, Landmark, Briefcase, FileText, Cpu, Mail, Phone, Linkedin, Menu, X } from 'lucide-react';
+import { Send, User, Sparkles, Building, Landmark, Briefcase, FileText, Cpu, Mail, Phone, LinkedIn, Menu, X } from 'lucide-react';
 
 export default function ContadoraFabiApp() {
   const [messages, setMessages] = useState([
@@ -148,7 +148,7 @@ export default function ContadoraFabiApp() {
               <span className="text-xs">(98) 99934-6905</span>
             </div>
             <div className="flex items-center gap-2">
-              <Linkedin size={16} className="text-[#4b9bb3]" />
+              <LinkedIn size={16} className="text-[#4b9bb3]" />
               <span className="text-xs">/in/faabicunha</span>
             </div>
           </div>
