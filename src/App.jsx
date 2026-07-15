@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, User, Sparkles, Building, Landmark, Briefcase, FileText, Cpu, Mail, Phone, LinkedIn, Menu, X } from 'lucide-react';
+// Removido o 'Linkedin' ou 'LinkedIn' da lista abaixo para corrigir o erro da Vercel
+import { Send, User, Sparkles, Building, Landmark, Briefcase, FileText, Cpu, Mail, Phone, Menu, X } from 'lucide-react';
 
 export default function ContadoraFabiApp() {
   const [messages, setMessages] = useState([
@@ -18,12 +19,9 @@ export default function ContadoraFabiApp() {
     scrollToBottom();
   }, [messages]);
 
-  // Função para chamar a API do Gemini
   const callGeminiAPI = async (userMessage, currentHistory) => {
-    
-    // ATENÇÃO: Para rodar aqui na nossa tela de testes, mantenha a chave como uma string vazia "".
-    // Quando for subir o projeto para a Netlify de forma definitiva, substitua a linha abaixo por:
-    // const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    // ATENÇÃO: Para rodar na Vercel de forma definitiva, comente ou apague a linha abaixo
+    // e volte a utilizar: const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     const apiKey = "";
     
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
@@ -64,7 +62,7 @@ export default function ContadoraFabiApp() {
       return data.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, ocorreu um pequeno erro ao processar a resposta.";
     } catch (error) {
       console.error(error);
-      return "Desculpe, estou enfrentando problemas de conexão. Verifique se a API Key foi configurada corretamente na Netlify!";
+      return "Desculpe, estou enfrentando problemas de conexão. Verifique se a API Key foi configurada corretamente nas variáveis de ambiente da Vercel!";
     }
   };
 
@@ -95,7 +93,7 @@ export default function ContadoraFabiApp() {
   return (
     <div className="flex h-screen bg-gray-50 text-[#000000]" style={{ fontFamily: "'Roboto', sans-serif" }}>
       
-      {/* Sidebar (Desktop & Mobile Menu) */}
+      {/* Sidebar */}
       <div className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#00237e] text-white transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col shadow-xl`}>
         <div className="p-6 flex items-center justify-between border-b border-[#ffffff]/10">
           <div className="flex items-center gap-3">
@@ -148,7 +146,12 @@ export default function ContadoraFabiApp() {
               <span className="text-xs">(98) 99934-6905</span>
             </div>
             <div className="flex items-center gap-2">
-              <LinkedIn size={16} className="text-[#4b9bb3]" />
+              {/* Ícone vetorizado do LinkedIn injetado diretamente (solução do erro da Vercel) */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#4b9bb3]">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
               <span className="text-xs">/in/faabicunha</span>
             </div>
           </div>
